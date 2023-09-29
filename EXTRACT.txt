@@ -1,0 +1,90 @@
+A fase de **EXTRACT** em ETL é onde você coleta os dados de suas fontes. No seu caso, você tem um conjunto de dados de jogos e está usando Python com Pandas para realizar essa extração. Aqui estão os passos básicos para realizar o processo de EXTRAÇÃO usando Pandas:
+
+### Passos Básicos:
+
+1. **Importar a Biblioteca Pandas:**
+   - Certifique-se de que você tem o Pandas instalado (`pip install pandas`) e, em seguida, importe a biblioteca no seu script:
+
+    ```python
+    import pandas as pd
+    ```
+
+2. **Carregar o Conjunto de Dados:**
+   - Carregue o seu conjunto de dados (arquivo CSV, Excel, etc.) usando a função `pd.read_csv()` ou `pd.read_excel()`.
+
+    ```python
+    # Exemplo para um arquivo CSV
+    df = pd.read_csv('caminho/do/seu/arquivo.csv')
+    ```
+
+3. **Verificar as Primeiras Linhas:**
+   - Utilize `df.head()` para verificar as primeiras linhas e garantir que os dados foram carregados corretamente.
+
+    ```python
+    print(df.head())
+    ```
+
+4. **Informações sobre o DataFrame:**
+   - Use `df.info()` para obter informações sobre os tipos de dados, valores nulos e o tamanho do DataFrame.
+
+    ```python
+    print(df.info())
+    ```
+
+5. **Estatísticas Descritivas:**
+   - Use `df.describe()` para obter estatísticas descritivas do DataFrame.
+
+    ```python
+    print(df.describe())
+    ```
+
+### Medidas Adicionais:
+
+1. **Tratamento de Dados Nulos:**
+   - Verifique se há valores nulos e decida como tratá-los (remover, preencher com média, mediana, etc.).
+
+    ```python
+    # Verificar nulos
+    print(df.isnull().sum())
+
+    # Preencher nulos (se necessário)
+    df = df.fillna(valor_de_preenchimento)
+    ```
+
+2. **Ajuste de Tipos de Dados:**
+   - Verifique se os tipos de dados atribuídos automaticamente pelo Pandas estão corretos. Por exemplo, datas devem ser do tipo `datetime`.
+
+    ```python
+    # Converter coluna de data para tipo datetime
+    df['release_date'] = pd.to_datetime(df['release_date'])
+    ```
+
+3. **Tratamento de Dados Duplicados:**
+   - Verifique e remova dados duplicados, se necessário.
+
+    ```python
+    # Remover duplicatas
+    df = df.drop_duplicates()
+    ```
+
+4. **Manuseio de Colunas Desnecessárias:**
+   - Se houver colunas que não são relevantes para a análise, remova-as.
+
+    ```python
+    # Exemplo de remoção de coluna
+    df = df.drop(columns=['coluna_desnecessaria'])
+    ```
+
+5. **Validação de Dados:**
+   - Realize verificações adicionais para garantir a integridade dos dados, como verificar se as datas estão no formato correto, se as pontuações estão dentro de um intervalo razoável, etc.
+
+### Salvando os Dados (Opcional):
+
+Se você fizer modificações significativas no DataFrame e desejar salvar os dados processados para a próxima fase (Transformação), pode usar o seguinte:
+
+```python
+# Salvar DataFrame modificado
+df.to_csv('caminho/do/seu/novo/arquivo.csv', index=False)
+```
+
+Esses são passos gerais e medidas de precaução para garantir que os dados sejam extraídos e carregados corretamente. Ajuste conforme necessário com base nas características específicas do seu conjunto de dados e nos objetivos da análise.
