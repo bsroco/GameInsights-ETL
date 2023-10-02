@@ -29,7 +29,4 @@ O objetivo deste projeto é realizar a extração, transformação e carga de da
 
 Contribuições são bem-vindas! Se você encontrar melhorias ou problemas, por favor, abra uma issue ou envie um pull request.
 
-## Licença
-
-Este projeto é licenciado sob a [sua licença aqui].
 
